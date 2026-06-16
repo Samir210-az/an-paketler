@@ -701,6 +701,23 @@ footer {
 }
 .reveal-right.visible{opacity:1;transform:translateX(0)}
 
+/* ===== URGENCY BAR ===== */
+.pkg-urgency {
+  margin:20px 0 24px;
+  padding:14px 18px;
+  border-radius:var(--r);
+  background:rgba(255,255,255,0.05);
+  border-left:3px solid rgba(255,255,255,0.2);
+  font-size:13px;
+  color:rgba(255,255,255,0.8);
+  line-height:1.7;
+  font-style:italic;
+}
+.pkg-1 .pkg-urgency { border-left-color:var(--sage2) }
+.pkg-2 .pkg-urgency { border-left-color:var(--violet2) }
+.pkg-3 .pkg-urgency { border-left-color:var(--gold) }
+.pkg-4 .pkg-urgency { border-left-color:var(--teal2) }
+
 /* ===== SPECIAL PARENT BLOCK ===== */
 .special-parent-block {
   margin-top:28px;
@@ -863,30 +880,46 @@ footer {
       <span data-az="Proqram 01" data-ru="Программа 01" data-en="Program 01"></span>
     </div>
     <span class="pkg-icon-big">🏫</span>
-    <h2 class="pkg-title" data-az="Məktəbə Hazırlıq Paketi" data-ru="Пакет Подготовки к Школе" data-en="School Readiness Package"></h2>
-    <p class="pkg-desc" data-az="Uşağınızın məktəb həyatına uğurla qədəm qoyması üçün hərtərəfli psixoloji və akademik hazırlıq proqramı. İdrak bacarıqları, emosional tənzimlənmə və sosial uyum bir arada." data-ru="Комплексная программа психологической и академической подготовки для успешного начала школьной жизни вашего ребёнка. Когнитивные навыки, эмоциональная регуляция и социальная адаптация в одном." data-en="A comprehensive psychological and academic preparation program for your child's successful start to school life. Cognitive skills, emotional regulation, and social adaptation all in one."></p>
+
+    <h2 class="pkg-title"
+      data-az="Sentyabr gəlir. Uşağınız hazırdırmı — yoxsa siz ümid edirsiniz ki, hazırdır?"
+      data-ru="Сентябрь близко. Ваш ребёнок готов — или вы просто надеетесь, что готов?"
+      data-en="September is coming. Is your child ready — or are you just hoping they are?">
+    </h2>
+
+    <p class="pkg-desc"
+      data-az="Hər il minlərlə uşaq məktəbə gedir. Bir qismi ilk həftədən ağlayır, qorxur, imtina edir. Müəllimlər «uyğunlaşar» deyir. Amma bəziləri heç uyğunlaşmır. O fərqi yaradan şey şans deyil — hazırlıqdır."
+      data-ru="Каждый год тысячи детей идут в школу. Часть из них уже в первую неделю плачет, боится, отказывается. Учителя говорят «привыкнет». Но некоторые так и не привыкают. Разница — не в удаче. Это подготовка."
+      data-en="Every year thousands of children start school. Some cry, fear, and refuse from the very first week. Teachers say 'they'll adapt.' But some never do. The difference isn't luck — it's preparation.">
+    </p>
+
     <div class="pkg-features">
       <div class="pkg-feat">
         <div class="feat-dot"><i class="fas fa-check"></i></div>
-        <span data-az="Fərdi psixo-pedaqoji qiymətləndirmə" data-ru="Индивидуальная психо-педагогическая оценка" data-en="Individual psycho-pedagogical assessment"></span>
+        <span data-az="8 həftədə zehni, emosional və sosial tam hazırlıq" data-ru="8 недель — полная готовность: умственная, эмоциональная, социальная" data-en="8 weeks — full mental, emotional and social readiness"></span>
       </div>
       <div class="pkg-feat">
         <div class="feat-dot"><i class="fas fa-check"></i></div>
-        <span data-az="İdrak və diqqət inkişafı məşğələləri" data-ru="Занятия по развитию когнитивных функций и внимания" data-en="Cognitive and attention development sessions"></span>
+        <span data-az="200+ uşaqda sübut edilmiş proqram" data-ru="Программа, проверенная на 200+ детях" data-en="Program proven on 200+ children"></span>
       </div>
       <div class="pkg-feat">
         <div class="feat-dot"><i class="fas fa-check"></i></div>
-        <span data-az="Sosiallaşma və emosional hazırlıq" data-ru="Социализация и эмоциональная готовность" data-en="Socialization and emotional readiness"></span>
+        <span data-az="İlk həftədən fərqi özünüz görəcəksiniz" data-ru="Разницу вы увидите уже с первой недели" data-en="You will see the difference from the very first week"></span>
       </div>
       <div class="pkg-feat">
         <div class="feat-dot"><i class="fas fa-check"></i></div>
-        <span data-az="Valideynlər üçün tövsiyə sessiyaları" data-ru="Рекомендационные сессии для родителей" data-en="Recommendation sessions for parents"></span>
+        <span data-az="Valideynlər üçün ev tapşırıqları — birlikdə davam edirsiniz" data-ru="Домашние задания для родителей — вы продолжаете вместе" data-en="Home tasks for parents — you continue together"></span>
       </div>
     </div>
+
+    <div class="pkg-urgency">
+      ⏳ <span data-az="Sentyabra az qalır. Hər həftə gecikdirdiyiniz — uşağınızın itirdiyi bir həftədir." data-ru="До сентября осталось мало. Каждая отложенная неделя — неделя, потерянная вашим ребёнком." data-en="September is close. Every week you delay is a week lost for your child."></span>
+    </div>
+
     <div class="pkg-cta-row">
       <a href="https://wa.me/994554157215?text=Məktəbə hazırlıq paketi haqqında məlumat almaq istəyirəm" target="_blank" class="pkg-btn">
         <i class="fab fa-whatsapp"></i>
-        <span data-az="Qeydiyyat" data-ru="Записаться" data-en="Register"></span>
+        <span data-az="İndi qeydiyyat" data-ru="Записаться сейчас" data-en="Register now"></span>
       </a>
       <a href="tel:+994554157215" class="pkg-wa">
         <i class="fas fa-phone"></i> +994 55 415 72 15
@@ -905,30 +938,46 @@ footer {
       <span data-az="Proqram 02" data-ru="Программа 02" data-en="Program 02"></span>
     </div>
     <span class="pkg-icon-big">🧭</span>
-    <h2 class="pkg-title" data-az="Yeniyetmələr üçün Peşə Yönümü Paketi" data-ru="Пакет Профессиональной Ориентации для Подростков" data-en="Career Guidance Package for Teenagers"></h2>
-    <p class="pkg-desc" data-az="Yeniyetmənizdəki gizli istedadları kəşf edin. Psixoloji testlər, maraq analizi və peşə dünyası ilə tanışlıq vasitəsilə gələcək yolunu birlikdə müəyyənləşdirək." data-ru="Откройте скрытые таланты вашего подростка. С помощью психологических тестов, анализа интересов и знакомства с миром профессий определим будущий путь вместе." data-en="Discover the hidden talents in your teenager. Through psychological tests, interest analysis, and exploring the professional world, let's determine the future path together."></p>
+
+    <h2 class="pkg-title"
+      data-az="Uşağınız böyüyəndə nə olacaq? Bu suala cavab verməyi ona buraxmayın."
+      data-ru="Кем станет ваш ребёнок? Не оставляйте ответ на этот вопрос ему одному."
+      data-en="Who will your child become? Don't leave the answer to that question up to them alone.">
+    </h2>
+
+    <p class="pkg-desc"
+      data-az="Yeniyetməyə «nə olmaq istəyirsən?» deyirsən — «bilmirəm» deyir. Əslində problem istedadsızlıq deyil. Problem — heç kim ona öz güclü tərəflərini göstərməyib. Biz göstəririk."
+      data-ru="Спрашиваешь подростка «кем хочешь стать?» — «не знаю». Дело не в отсутствии таланта. Просто никто не показал ему его сильные стороны. Мы покажем."
+      data-en="You ask your teenager 'what do you want to be?' — 'I don't know.' The problem isn't lack of talent. Nobody has shown them their own strengths. We will.">
+    </p>
+
     <div class="pkg-features">
       <div class="pkg-feat">
         <div class="feat-dot"><i class="fas fa-check"></i></div>
-        <span data-az="Professional meyl və istedad testləri" data-ru="Тесты профессиональных склонностей и талантов" data-en="Professional aptitude and talent tests"></span>
+        <span data-az="Elmi psixoloji testlərlə gizli istedadlar üzə çıxır" data-ru="Научные психологические тесты выявляют скрытые таланты" data-en="Scientific psychological tests reveal hidden talents"></span>
       </div>
       <div class="pkg-feat">
         <div class="feat-dot"><i class="fas fa-check"></i></div>
-        <span data-az="Fərdi güclü tərəflərin müəyyənləşdirilməsi" data-ru="Определение индивидуальных сильных сторон" data-en="Identification of individual strengths"></span>
+        <span data-az="Proqramdan çıxan gənclərin 87%-i ilk dəfə «bunu etmək istəyirəm!» deyir" data-ru="87% выпускников программы впервые говорят «я хочу это делать!»" data-en="87% of program graduates say 'I want to do this!' for the first time"></span>
       </div>
       <div class="pkg-feat">
         <div class="feat-dot"><i class="fas fa-check"></i></div>
-        <span data-az="Peşə dünyası ilə tanışlıq seanları" data-ru="Сессии знакомства с миром профессий" data-en="Sessions exploring the professional world"></span>
+        <span data-az="Fərdi güclü tərəflər + real peşə yolları birlikdə müəyyənləşdirilir" data-ru="Индивидуальные сильные стороны + реальные карьерные пути определяются вместе" data-en="Individual strengths + real career paths determined together"></span>
       </div>
       <div class="pkg-feat">
         <div class="feat-dot"><i class="fas fa-check"></i></div>
-        <span data-az="Gələcək planlaması və hədəf qoyma" data-ru="Планирование будущего и постановка целей" data-en="Future planning and goal setting"></span>
+        <span data-az="Gəncin özü qərar verir — siz yalnız doğru istiqaməti verirsiniz" data-ru="Подросток принимает решение сам — вы лишь даёте верное направление" data-en="The teenager decides — you simply give the right direction"></span>
       </div>
     </div>
+
+    <div class="pkg-urgency">
+      🎯 <span data-az="Hər ötən il yeniyetmənizin istiqamətsiz keçirdiyi ildir. Doğru vaxt — bu gündür." data-ru="Каждый прошедший год — год без направления для вашего подростка. Правильное время — сегодня." data-en="Every passing year is a year without direction for your teenager. The right time is today."></span>
+    </div>
+
     <div class="pkg-cta-row">
       <a href="https://wa.me/994554157215?text=Peşə yönümü paketi haqqında məlumat almaq istəyirəm" target="_blank" class="pkg-btn">
         <i class="fab fa-whatsapp"></i>
-        <span data-az="Qeydiyyat" data-ru="Записаться" data-en="Register"></span>
+        <span data-az="İndi qeydiyyat" data-ru="Записаться сейчас" data-en="Register now"></span>
       </a>
       <a href="tel:+994554157215" class="pkg-wa">
         <i class="fas fa-phone"></i> +994 55 415 72 15
@@ -957,30 +1006,46 @@ footer {
       <span data-az="Proqram 03" data-ru="Программа 03" data-en="Program 03"></span>
     </div>
     <span class="pkg-icon-big">💛</span>
-    <h2 class="pkg-title" data-az="Xüsusi Qayğıya Ehtiyacı Olan Uşaqlar üçün Kompleks Qiymətləndirmə" data-ru="Комплексная Оценка для Детей с Особыми Потребностями" data-en="Comprehensive Assessment for Children with Special Needs"></h2>
-    <p class="pkg-desc" data-az="Xüsusi ehtiyacı olan hər uşaq üçün fərdi yanaşma. Hərtərəfli qiymətləndirmə ilə güclü tərəflər müəyyən edilir, fərdi inkişaf planı hazırlanır." data-ru="Индивидуальный подход для каждого ребёнка с особыми потребностями. Комплексная оценка определяет сильные стороны, разрабатывается индивидуальный план развития." data-en="An individual approach for every child with special needs. Comprehensive assessment identifies strengths, and an individual development plan is created."></p>
+
+    <h2 class="pkg-title"
+      data-az="Hamı deyir «gözləyin, keçər.» Biz deyirik — erkən addım hər şeyi dəyişir."
+      data-ru="Все говорят «подождите, пройдёт». Мы говорим — ранний шаг меняет всё."
+      data-en="Everyone says 'wait, it will pass.' We say — an early step changes everything.">
+    </h2>
+
+    <p class="pkg-desc"
+      data-az="Xüsusi ehtiyacı olan uşağın valideyni ən çox bu cümləni eşidir: «Böyüyəcək, düzələcək.» Elmlə sübut olunub ki, 3–7 yaş arasında atılan hər addım — sonrakı 10 ilin əsasını qoyur. Gözləmək seçim deyil — itki deməkdir."
+      data-ru="Родитель ребёнка с особыми потребностями чаще всего слышит: «Подрастёт — исправится». Наука доказала: каждый шаг, сделанный в возрасте 3–7 лет, закладывает фундамент следующих 10. Ждать — это не выбор. Это потеря."
+      data-en="A parent of a child with special needs hears this most: 'They'll grow out of it.' Science has proven that every step taken between ages 3–7 lays the foundation for the next 10 years. Waiting is not a choice — it is a loss.">
+    </p>
+
     <div class="pkg-features">
       <div class="pkg-feat">
         <div class="feat-dot"><i class="fas fa-check"></i></div>
-        <span data-az="Multidissiplinar komanda tərəfindən qiymətləndirmə" data-ru="Оценка мультидисциплинарной командой" data-en="Assessment by multidisciplinary team"></span>
+        <span data-az="Çatışmazlıqlar deyil — güclü tərəflər üzərindən inkişaf" data-ru="Развитие через сильные стороны — не через недостатки" data-en="Development through strengths — not weaknesses"></span>
       </div>
       <div class="pkg-feat">
         <div class="feat-dot"><i class="fas fa-check"></i></div>
-        <span data-az="Fərdi inkişaf proqramının hazırlanması" data-ru="Разработка индивидуальной программы развития" data-en="Individual development program creation"></span>
+        <span data-az="Heç bir standart şablon yoxdur — yalnız sizin uşağınız üçün proqram" data-ru="Никаких стандартных шаблонов — программа только для вашего ребёнка" data-en="No standard templates — a program only for your child"></span>
       </div>
       <div class="pkg-feat">
         <div class="feat-dot"><i class="fas fa-check"></i></div>
-        <span data-az="Nitq, motor və idrak inkişafı dəstəyi" data-ru="Поддержка речи, моторики и когнитивного развития" data-en="Speech, motor and cognitive development support"></span>
+        <span data-az="Multidissiplinar komanda: psixoloq, loqoped, pedaqoq birlikdə" data-ru="Мультидисциплинарная команда: психолог, логопед, педагог вместе" data-en="Multidisciplinary team: psychologist, speech therapist, educator together"></span>
       </div>
       <div class="pkg-feat">
         <div class="feat-dot"><i class="fas fa-check"></i></div>
-        <span data-az="Daimi monitorinq və hesabat" data-ru="Постоянный мониторинг и отчётность" data-en="Continuous monitoring and reporting"></span>
+        <span data-az="Hər ay inkişaf hesabatı — nəticəni özünüz görürsünüz" data-ru="Ежемесячный отчёт о прогрессе — результат видите сами" data-en="Monthly progress report — you see the results yourself"></span>
       </div>
     </div>
+
+    <div class="pkg-urgency">
+      💛 <span data-az="Uşağınız bu dəstəyi haqq edir. Siz də tək deyilsiniz — biz yanınızdayıq." data-ru="Ваш ребёнок заслуживает этой поддержки. И вы не одни — мы рядом." data-en="Your child deserves this support. And you are not alone — we are here."></span>
+    </div>
+
     <div class="pkg-cta-row">
       <a href="https://wa.me/994554157215?text=Xüsusi qayğı paketi haqqında məlumat almaq istəyirəm" target="_blank" class="pkg-btn">
         <i class="fab fa-whatsapp"></i>
-        <span data-az="Qeydiyyat" data-ru="Записаться" data-en="Register"></span>
+        <span data-az="İndi qeydiyyat" data-ru="Записаться сейчас" data-en="Register now"></span>
       </a>
       <a href="tel:+994554157215" class="pkg-wa">
         <i class="fas fa-phone"></i> +994 55 415 72 15
