@@ -701,6 +701,54 @@ footer {
 }
 .reveal-right.visible{opacity:1;transform:translateX(0)}
 
+/* ===== SPECIAL PARENT BLOCK ===== */
+.special-parent-block {
+  margin-top:28px;
+  background:rgba(201,151,58,0.07);
+  border:1px solid rgba(201,151,58,0.25);
+  border-left:3px solid var(--gold);
+  border-radius:var(--r);
+  padding:22px 20px;
+  position:relative;
+  overflow:hidden;
+}
+.special-parent-block::before {
+  content:'';position:absolute;
+  top:-40px;right:-40px;
+  width:120px;height:120px;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,151,58,0.12),transparent 70%);
+  pointer-events:none;
+}
+.spb-header {
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:12px;
+}
+.spb-icon { font-size:22px;flex-shrink:0 }
+.spb-label {
+  font-size:13px;font-weight:700;
+  color:var(--gold2);letter-spacing:0.3px;
+  line-height:1.4;
+}
+.spb-text {
+  font-size:14px;color:rgba(255,255,255,0.72);
+  line-height:1.85;margin-bottom:18px;
+  font-style:italic;
+}
+.spb-btn {
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(201,151,58,0.15);
+  border:1px solid rgba(201,151,58,0.35);
+  color:var(--gold2);
+  padding:10px 18px;border-radius:20px;
+  font-size:13px;font-weight:600;
+  transition:background 0.2s,transform 0.2s;
+}
+.spb-btn:hover {
+  background:rgba(201,151,58,0.25);
+  transform:translateY(-2px);
+}
+.spb-btn i { color:#25D366;font-size:15px }
+
 /* ===== MOBILE ===== */
 @media(max-width:599px){
   .pkg-content { padding:40px 24px }
@@ -951,27 +999,76 @@ footer {
       <span data-az="Proqram 04" data-ru="Программа 04" data-en="Program 04"></span>
     </div>
     <span class="pkg-icon-big">👨‍👩‍👧</span>
-    <h2 class="pkg-title" data-az="Valideyn Məsləhət Xidməti" data-ru="Консультационная Служба для Родителей" data-en="Parent Consultation Service"></h2>
-    <p class="pkg-desc" data-az="Uşağınızın yanında ən güclü dayağınız — siz olmalısınız. Valideyn olaraq özünüzü necə inkişaf etdirəcəyinizi, uşağınızla necə ünsiyyət quracağınızı öyrənin." data-ru="Самая сильная опора для вашего ребёнка — это вы. Узнайте, как развиваться как родитель и как выстроить правильную коммуникацию с ребёнком." data-en="The strongest support for your child is you. Learn how to develop yourself as a parent and how to communicate effectively with your child."></p>
+
+    <h2 class="pkg-title"
+      data-az="Uşağınıza hər şeyi verirsiniz. Bəs özünüzə?"
+      data-ru="Вы даёте ребёнку всё. А себе?"
+      data-en="You give your child everything. But what about yourself?">
+    </h2>
+
+    <p class="pkg-desc"
+      data-az="Uşaqla hər söhbət mübahisəyə çevrilir? Yaxınlaşmaq istəyirsən — uzaqlaşır? Bu sizin günahınız deyil. Sadəcə heç kim sizə uşağınızın dilini öyrətməyib. Biz öyrədirik."
+      data-ru="Каждый разговор с ребёнком превращается в спор? Хотите сблизиться — он отдаляется? Это не ваша вина. Просто никто не научил вас языку вашего ребёнка. Мы научим."
+      data-en="Every conversation with your child turns into an argument? You try to get closer — they pull away? This is not your fault. Nobody has taught you your child's language. We will.">
+    </p>
+
     <div class="pkg-features">
       <div class="pkg-feat">
         <div class="feat-dot"><i class="fas fa-check"></i></div>
-        <span data-az="Fərdi valideyn psixoloji məsləhəti" data-ru="Индивидуальные психологические консультации для родителей" data-en="Individual psychological parent consultations"></span>
+        <span
+          data-az="Fərdi psixoloji məsləhət — yalnız sizin vəziyyətiniz üçün"
+          data-ru="Индивидуальная консультация — только под вашу ситуацию"
+          data-en="Individual consultation — tailored only to your situation"></span>
       </div>
       <div class="pkg-feat">
         <div class="feat-dot"><i class="fas fa-check"></i></div>
-        <span data-az="Uşaqla ünsiyyət bacarıqlarının inkişafı" data-ru="Развитие навыков общения с ребёнком" data-en="Child communication skills development"></span>
+        <span
+          data-az="Bir neçə seans sonra evdəki ab-hava dəyişir"
+          data-ru="После нескольких сеансов атмосфера дома меняется"
+          data-en="After a few sessions the atmosphere at home changes"></span>
       </div>
       <div class="pkg-feat">
         <div class="feat-dot"><i class="fas fa-check"></i></div>
-        <span data-az="Stres idarəetməsi və tükənmişlik profilaktikası" data-ru="Управление стрессом и профилактика выгорания" data-en="Stress management and burnout prevention"></span>
+        <span
+          data-az="Stres, tükənmişlik, gücsüzlük hissi — bunlarla birlikdə işləyirik"
+          data-ru="Стресс, выгорание, ощущение беспомощности — работаем вместе"
+          data-en="Stress, burnout, feeling helpless — we work through all of it"></span>
       </div>
       <div class="pkg-feat">
         <div class="feat-dot"><i class="fas fa-check"></i></div>
-        <span data-az="Qrup məsləhət sessiyaları (valideyn klubu)" data-ru="Групповые консультационные сессии (клуб родителей)" data-en="Group consultation sessions (parent club)"></span>
+        <span
+          data-az="Valideyn klubu — eyni yolu keçən ailələrlə birlikdə"
+          data-ru="Клуб родителей — вместе с семьями, прошедшими тот же путь"
+          data-en="Parent club — together with families walking the same path"></span>
       </div>
     </div>
-    <div class="pkg-cta-row">
+
+    <!-- XÜSUSİ UŞAQ VALİDEYNİ BLOKU -->
+    <div class="special-parent-block reveal">
+      <div class="spb-header">
+        <span class="spb-icon">💛</span>
+        <span class="spb-label"
+          data-az="Xüsusi ehtiyacı olan uşağın valideynisinizsə..."
+          data-ru="Если вы родитель ребёнка с особыми потребностями..."
+          data-en="If you are a parent of a child with special needs...">
+        </span>
+      </div>
+      <p class="spb-text"
+        data-az="&quot;Gözləyin, keçər&quot; cümləsini neçə dəfə eşitdiniz? Tək qaldığınızı hiss etdiniz? Yorulduğunuzu, amma davam etmək məcburiyyətində olduğunuzu? Siz tək deyilsiniz — və bu hisslər tamamilə normaldır. Sizin üçün xüsusi dəstək proqramımız var."
+        data-ru="Сколько раз вы слышали &quot;подождите, пройдёт&quot;? Чувствовали себя одинокими? Уставшими, но вынужденными продолжать? Вы не одни — и эти чувства абсолютно нормальны. У нас есть специальная программа поддержки для вас."
+        data-en="How many times have you heard &quot;wait, it will pass&quot;? Felt alone? Exhausted, but forced to continue? You are not alone — and these feelings are completely normal. We have a special support program just for you.">
+      </p>
+      <a href="https://wa.me/994554157215?text=Xüsusi ehtiyacı olan uşağın valideyni kimi dəstək almaq istəyirəm"
+        target="_blank" class="spb-btn">
+        <i class="fab fa-whatsapp"></i>
+        <span
+          data-az="Xüsusi dəstək üçün yazın"
+          data-ru="Написать для особой поддержки"
+          data-en="Write for special support"></span>
+      </a>
+    </div>
+
+    <div class="pkg-cta-row" style="margin-top:24px">
       <a href="https://wa.me/994554157215?text=Valideyn məsləhəti xidməti haqqında məlumat almaq istəyirəm" target="_blank" class="pkg-btn">
         <i class="fab fa-whatsapp"></i>
         <span data-az="Qeydiyyat" data-ru="Записаться" data-en="Register"></span>
