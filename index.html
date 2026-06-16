@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AN Mərkəzi — 4 Həyat Dəyişdirən Proqram</title>
+<meta name="description" content="Uşağınızın gələcəyinə investisiya edin. AN Psixoloji Mərkəzinin 4 xüsusi proqramı.">
+<link rel="icon" href="https://raw.githubusercontent.com/Samir210-az/an-merkezi/main/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<style>
+/* ===== TOKENS ===== */
+:root {
+  --ink:      #0D0A14;
+  --ink2:     #1A1525;
+  --bordo:    #6A0000;
+  --bordo2:   #420000;
+  --gold:     #C9973A;
+  --gold2:    #E8B96A;
+  --sage:     #4A7C59;
+  --sage2:    #6DAB82;
+  --violet:   #4B3A7A;
+  --violet2:  #7B62BE;
+  --teal:     #1A6B72;
+  --teal2:    #2BA3AE;
+  --cream:    #FAF6F0;
+  --white:    #FFFFFF;
+  --glass:    rgba(255,255,255,0.07);
+  --glassborder: rgba(255,255,255,0.12);
+  --r: 16px;
+  --r2: 28px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--ink);
+  color:var(--white);
+  overflow-x:hidden;
+  line-height:1.6;
+}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+button{font-family:'DM Sans',sans-serif;cursor:pointer;border:none}
+
+/* ===== LANG SWITCHER ===== */
+.lang-data { display:none !important; }
+
+/* ===== NAVBAR ===== */
+.nav {
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:16px 32px;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:background 0.4s, backdrop-filter 0.4s, border 0.4s;
+}
+.nav.scrolled {
+  background:rgba(13,10,20,0.92);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(201,151,58,0.15);
+}
+.nav-brand { display:flex;align-items:center;gap:12px }
+.nav-brand img { width:38px;height:38px;object-fit:contain;border-radius:8px }
+.nav-brand-text {
+  font-family:'Cormorant Garamond',serif;
+  font-size:13px;font-weight:600;
+  color:rgba(255,255,255,0.85);
+  line-height:1.3;max-width:160px;
+  display:none;
+}
+@media(min-width:600px){.nav-brand-text{display:block}}
+
+.nav-right { display:flex;align-items:center;gap:12px }
+.lang-btn {
+  background:var(--glass);
+  border:1px solid var(--glassborder);
+  color:rgba(255,255,255,0.7);
+  padding:5px 10px;border-radius:20px;
+  font-size:11px;font-weight:600;letter-spacing:0.5px;
+  cursor:pointer;transition:all 0.2s;
+}
+.lang-btn.active,.lang-btn:hover {
+  background:rgba(201,151,58,0.2);
+  border-color:rgba(201,151,58,0.5);
+  color:var(--gold2);
+}
+.nav-ig {
+  width:36px;height:36px;border-radius:50%;
+  background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+  display:flex;align-items:center;justify-content:center;
+  color:white;font-size:15px;transition:transform 0.2s;
+}
+.nav-ig:hover{transform:scale(1.1)}
+.nav-cta {
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:var(--ink);
+  padding:8px 18px;border-radius:20px;
+  font-size:12px;font-weight:700;
+  display:none;align-items:center;gap:6px;
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(201,151,58,0.4)}
+@media(min-width:500px){.nav-cta{display:flex}}
+
+/* ===== HERO ===== */
+.hero {
+  min-height:100vh;
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;
+  padding:100px 24px 80px;
+}
+
+/* Parallax layers */
+.hero-bg-layer {
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 30%, rgba(106,0,0,0.55) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 50% at 80% 70%, rgba(75,58,122,0.3) 0%, transparent 60%),
+    linear-gradient(180deg, var(--ink2) 0%, #060310 100%);
+  will-change:transform;
+}
+.hero-photo-layer {
+  position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?w=1600&q=80&fit=crop') center/cover no-repeat;
+  opacity:0.12;
+  will-change:transform;
+}
+.hero-particles {
+  position:absolute;inset:0;overflow:hidden;pointer-events:none;
+}
+.particle {
+  position:absolute;border-radius:50%;
+  background:var(--gold);opacity:0;
+  animation:floatUp linear infinite;
+}
+@keyframes floatUp {
+  0%{transform:translateY(0) scale(1);opacity:0}
+  10%{opacity:0.6}
+  90%{opacity:0.2}
+  100%{transform:translateY(-100vh) scale(0.3);opacity:0}
+}
+.hero-orb {
+  position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;
+  animation:orbPulse 6s ease-in-out infinite alternate;
+}
+.hero-orb-1{width:500px;height:500px;top:-20%;left:-15%;background:rgba(106,0,0,0.25)}
+.hero-orb-2{width:400px;height:400px;bottom:-10%;right:-10%;background:rgba(75,58,122,0.2);animation-delay:-3s}
+.hero-orb-3{width:300px;height:300px;top:40%;left:40%;background:rgba(201,151,58,0.1);animation-delay:-1.5s}
+@keyframes orbPulse{from{transform:scale(1)}to{transform:scale(1.15)}}
+
+/* Floating shapes */
+.hero-shape {
+  position:absolute;border:1px solid rgba(201,151,58,0.15);
+  border-radius:50%;pointer-events:none;
+  animation:shapeSpin linear infinite;
+}
+.hs1{width:600px;height:600px;top:50%;left:50%;transform:translate(-50%,-50%);animation-duration:40s}
+.hs2{width:400px;height:400px;top:50%;left:50%;transform:translate(-50%,-50%);animation-duration:30s;animation-direction:reverse;border-color:rgba(75,58,122,0.12)}
+.hs3{width:200px;height:200px;top:50%;left:50%;transform:translate(-50%,-50%);animation-duration:20s;border-color:rgba(201,151,58,0.2)}
+@keyframes shapeSpin{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+
+.hero-content { position:relative;z-index:10;max-width:780px }
+.hero-eyebrow {
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(201,151,58,0.1);
+  border:1px solid rgba(201,151,58,0.3);
+  color:var(--gold2);padding:6px 16px;border-radius:20px;
+  font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
+  margin-bottom:28px;opacity:0;transform:translateY(20px);
+}
+.hero-logo {
+  width:80px;height:80px;object-fit:contain;
+  margin:0 auto 20px;
+  filter:drop-shadow(0 0 30px rgba(201,151,58,0.5));
+  opacity:0;transform:scale(0.8);
+}
+.hero-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(36px,7.5vw,76px);
+  font-weight:300;line-height:1.1;
+  margin-bottom:12px;
+  opacity:0;transform:translateY(30px);
+}
+.hero-title em {
+  font-style:italic;color:var(--gold2);
+  font-weight:300;
+}
+.hero-title strong {
+  font-weight:700;display:block;
+  background:linear-gradient(135deg,#fff 0%,var(--gold2) 50%,#fff 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-sub {
+  font-size:clamp(14px,3vw,18px);
+  color:rgba(255,255,255,0.6);
+  max-width:520px;margin:16px auto 36px;
+  line-height:1.8;opacity:0;transform:translateY(20px);
+}
+.hero-btns {
+  display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
+  opacity:0;transform:translateY(20px);margin-bottom:60px;
+}
+.btn-gold {
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:var(--ink);padding:14px 28px;border-radius:30px;
+  font-size:14px;font-weight:700;
+  display:inline-flex;align-items:center;gap:8px;
+  box-shadow:0 6px 30px rgba(201,151,58,0.4);
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(201,151,58,0.5)}
+.btn-outline {
+  background:transparent;color:white;
+  padding:14px 28px;border-radius:30px;
+  font-size:14px;font-weight:500;
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid rgba(255,255,255,0.25);
+  transition:background 0.2s,border-color 0.2s;
+}
+.btn-outline:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.4)}
+
+/* Stats bar */
+.hero-stats {
+  display:flex;gap:0;justify-content:center;
+  border:1px solid var(--glassborder);
+  border-radius:var(--r2);
+  overflow:hidden;max-width:520px;margin:0 auto;
+  background:var(--glass);backdrop-filter:blur(12px);
+  opacity:0;transform:translateY(20px);
+}
+.stat-item {
+  flex:1;padding:18px 12px;text-align:center;
+  border-right:1px solid var(--glassborder);
+}
+.stat-item:last-child{border-right:none}
+.stat-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:28px;font-weight:700;color:var(--gold2);display:block;
+}
+.stat-lbl { font-size:11px;color:rgba(255,255,255,0.5);margin-top:2px }
+
+/* Scroll indicator */
+.scroll-ind {
+  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  color:rgba(255,255,255,0.3);font-size:10px;letter-spacing:1px;
+  animation:bounce 2s ease-in-out infinite;
+}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+.scroll-ind .arrow { font-size:18px }
+
+/* ===== INTRO BAND ===== */
+.intro-band {
+  background:linear-gradient(135deg,var(--bordo) 0%,var(--bordo2) 100%);
+  padding:48px 24px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.intro-band::before {
+  content:'';position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=1200&q=60&fit=crop') center/cover;
+  opacity:0.06;
+}
+.intro-band-inner { position:relative;z-index:1;max-width:700px;margin:0 auto }
+.intro-band h2 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(22px,5vw,38px);font-weight:400;
+  font-style:italic;margin-bottom:12px;
+}
+.intro-band p { font-size:15px;color:rgba(255,255,255,0.75);line-height:1.9 }
+.gold-line {
+  width:60px;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:20px auto;
+}
+
+/* ===== PACKAGES ===== */
+.packages { padding:0 }
+
+.pkg-section {
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr;
+  position:relative;overflow:hidden;
+}
+@media(min-width:900px){
+  .pkg-section { grid-template-columns:1fr 1fr;min-height:90vh }
+}
+
+/* Package photo side */
+.pkg-photo {
+  position:relative;overflow:hidden;
+  min-height:50vh;
+}
+@media(min-width:900px){.pkg-photo{min-height:auto}}
+.pkg-photo img {
+  width:100%;height:100%;object-fit:cover;
+  display:block;
+  transition:transform 0.6s ease;
+  will-change:transform;
+}
+.pkg-photo-overlay {
+  position:absolute;inset:0;
+  pointer-events:none;
+}
+.pkg-photo-num {
+  position:absolute;
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(80px,15vw,180px);
+  font-weight:700;line-height:1;
+  opacity:0.08;color:white;
+  pointer-events:none;
+  right:16px;bottom:-20px;
+  transition:opacity 0.4s;
+}
+.pkg-section:hover .pkg-photo-num{opacity:0.12}
+
+/* Package content side */
+.pkg-content {
+  display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(40px,6vw,80px) clamp(24px,5vw,64px);
+  position:relative;
+}
+.pkg-badge {
+  display:inline-flex;align-items:center;gap:8px;
+  padding:5px 14px;border-radius:20px;
+  font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  margin-bottom:20px;width:fit-content;
+}
+.pkg-icon-big {
+  font-size:48px;margin-bottom:16px;
+  display:block;
+  filter:drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+  transition:transform 0.3s;
+}
+.pkg-section:hover .pkg-icon-big{transform:scale(1.1) rotate(-3deg)}
+.pkg-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(28px,4.5vw,48px);
+  font-weight:600;line-height:1.15;
+  margin-bottom:16px;
+}
+.pkg-desc {
+  font-size:15px;line-height:1.85;
+  color:rgba(255,255,255,0.7);
+  margin-bottom:28px;
+  max-width:440px;
+}
+.pkg-features {
+  display:flex;flex-direction:column;gap:10px;
+  margin-bottom:32px;
+}
+.pkg-feat {
+  display:flex;align-items:flex-start;gap:12px;
+  font-size:14px;color:rgba(255,255,255,0.75);
+}
+.feat-dot {
+  width:20px;height:20px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;margin-top:2px;font-size:10px;
+}
+.pkg-cta-row {
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+}
+.pkg-btn {
+  padding:12px 24px;border-radius:24px;
+  font-size:13px;font-weight:700;
+  display:inline-flex;align-items:center;gap:8px;
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.pkg-btn:hover{transform:translateY(-2px)}
+.pkg-wa {
+  color:rgba(255,255,255,0.5);font-size:13px;
+  display:flex;align-items:center;gap:6px;
+  transition:color 0.2s;
+}
+.pkg-wa:hover{color:white}
+
+/* Package 1 — Məktəbə Hazırlıq — Sage/Green */
+.pkg-1 { background:linear-gradient(135deg,#0A1A0F 0%,#0F2016 100%) }
+.pkg-1 .pkg-photo-overlay { background:linear-gradient(90deg,transparent 60%,#0A1A0F) }
+@media(min-width:900px){
+  .pkg-1 .pkg-photo-overlay { background:linear-gradient(270deg,#0A1A0F 0%,transparent 50%) }
+  .pkg-1 .pkg-photo { order:-1 }
+}
+.pkg-1 .pkg-badge { background:rgba(77,124,89,0.2);border:1px solid rgba(109,171,130,0.3);color:var(--sage2) }
+.pkg-1 .pkg-title { color:white }
+.pkg-1 .feat-dot { background:rgba(77,124,89,0.3);color:var(--sage2) }
+.pkg-1 .pkg-btn { background:linear-gradient(135deg,var(--sage),var(--sage2));color:white;box-shadow:0 6px 24px rgba(74,124,89,0.4) }
+.pkg-1 .pkg-btn:hover{box-shadow:0 10px 32px rgba(74,124,89,0.5)}
+
+/* Package 2 — Peşə Yönümü — Violet */
+.pkg-2 { background:linear-gradient(135deg,#0E0A1A 0%,#130F22 100%) }
+.pkg-2 .pkg-photo-overlay { background:linear-gradient(270deg,transparent 60%,#0E0A1A) }
+@media(min-width:900px){
+  .pkg-2 .pkg-photo-overlay { background:linear-gradient(90deg,#0E0A1A 0%,transparent 50%) }
+}
+.pkg-2 .pkg-badge { background:rgba(75,58,122,0.2);border:1px solid rgba(123,98,190,0.3);color:var(--violet2) }
+.pkg-2 .pkg-title { color:white }
+.pkg-2 .feat-dot { background:rgba(75,58,122,0.3);color:var(--violet2) }
+.pkg-2 .pkg-btn { background:linear-gradient(135deg,var(--violet),var(--violet2));color:white;box-shadow:0 6px 24px rgba(75,58,122,0.4) }
+.pkg-2 .pkg-btn:hover{box-shadow:0 10px 32px rgba(75,58,122,0.5)}
+
+/* Package 3 — Xüsusi Qayğı — Bordo/Gold */
+.pkg-3 { background:linear-gradient(135deg,#130000 0%,#1C0505 100%) }
+.pkg-3 .pkg-photo-overlay { background:linear-gradient(90deg,transparent 60%,#130000) }
+@media(min-width:900px){
+  .pkg-3 .pkg-photo-overlay { background:linear-gradient(270deg,#130000 0%,transparent 50%) }
+  .pkg-3 .pkg-photo { order:-1 }
+}
+.pkg-3 .pkg-badge { background:rgba(106,0,0,0.3);border:1px solid rgba(201,151,58,0.3);color:var(--gold2) }
+.pkg-3 .pkg-title { color:white }
+.pkg-3 .feat-dot { background:rgba(106,0,0,0.3);color:var(--gold2) }
+.pkg-3 .pkg-btn { background:linear-gradient(135deg,var(--bordo),#8B0000);color:var(--gold2);box-shadow:0 6px 24px rgba(106,0,0,0.5) }
+.pkg-3 .pkg-btn:hover{box-shadow:0 10px 32px rgba(106,0,0,0.6)}
+
+/* Package 4 — Valideyn Məsləhəti — Teal */
+.pkg-4 { background:linear-gradient(135deg,#030F10 0%,#071518 100%) }
+.pkg-4 .pkg-photo-overlay { background:linear-gradient(270deg,transparent 60%,#030F10) }
+@media(min-width:900px){
+  .pkg-4 .pkg-photo-overlay { background:linear-gradient(90deg,#030F10 0%,transparent 50%) }
+}
+.pkg-4 .pkg-badge { background:rgba(26,107,114,0.2);border:1px solid rgba(43,163,174,0.3);color:var(--teal2) }
+.pkg-4 .pkg-title { color:white }
+.pkg-4 .feat-dot { background:rgba(26,107,114,0.3);color:var(--teal2) }
+.pkg-4 .pkg-btn { background:linear-gradient(135deg,var(--teal),var(--teal2));color:white;box-shadow:0 6px 24px rgba(26,107,114,0.4) }
+.pkg-4 .pkg-btn:hover{box-shadow:0 10px 32px rgba(26,107,114,0.5)}
+
+/* ===== DIVIDER ===== */
+.section-divider {
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(201,151,58,0.2),transparent);
+}
+
+/* ===== WHY SECTION ===== */
+.why-section {
+  padding:clamp(60px,10vw,120px) 24px;
+  background:var(--ink2);
+  position:relative;overflow:hidden;
+}
+.why-section::before {
+  content:'';position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1491013516836-7db643ee125a?w=1400&q=60') center/cover;
+  opacity:0.04;
+}
+.why-inner { max-width:1100px;margin:0 auto;position:relative;z-index:1 }
+.section-label {
+  font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:12px;display:block;
+}
+.section-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(28px,5vw,54px);font-weight:400;
+  line-height:1.2;margin-bottom:16px;
+}
+.section-title em { font-style:italic;color:var(--gold2) }
+.why-grid {
+  display:grid;grid-template-columns:1fr;
+  gap:20px;margin-top:48px;
+}
+@media(min-width:600px){.why-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:900px){.why-grid{grid-template-columns:repeat(3,1fr)}}
+.why-card {
+  background:var(--glass);border:1px solid var(--glassborder);
+  border-radius:var(--r2);padding:32px 24px;
+  transition:transform 0.3s,border-color 0.3s,box-shadow 0.3s;
+  position:relative;overflow:hidden;
+}
+.why-card::before {
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  transform:scaleX(0);transition:transform 0.4s;
+}
+.why-card:hover { transform:translateY(-6px);border-color:rgba(201,151,58,0.25);box-shadow:0 20px 60px rgba(0,0,0,0.4) }
+.why-card:hover::before { transform:scaleX(1) }
+.why-icon { font-size:36px;margin-bottom:16px;display:block }
+.why-card h3 {
+  font-family:'Cormorant Garamond',serif;font-size:22px;
+  font-weight:600;margin-bottom:10px;
+}
+.why-card p { font-size:14px;color:rgba(255,255,255,0.6);line-height:1.8 }
+
+/* ===== PROCESS ===== */
+.process-section {
+  padding:clamp(60px,10vw,120px) 24px;
+  background:linear-gradient(180deg,#060310 0%,var(--ink2) 100%);
+  position:relative;overflow:hidden;
+}
+.process-inner { max-width:900px;margin:0 auto }
+.process-steps { margin-top:48px;display:flex;flex-direction:column;gap:0 }
+.process-step {
+  display:grid;grid-template-columns:60px 1fr;gap:24px;
+  position:relative;padding-bottom:40px;
+}
+.process-step:last-child{padding-bottom:0}
+.process-step::before {
+  content:'';position:absolute;
+  left:29px;top:60px;bottom:0;width:2px;
+  background:linear-gradient(180deg,rgba(201,151,58,0.4),transparent);
+}
+.process-step:last-child::before{display:none}
+.step-num {
+  width:60px;height:60px;border-radius:50%;
+  background:var(--glass);border:2px solid rgba(201,151,58,0.3);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:700;color:var(--gold2);
+  flex-shrink:0;transition:background 0.3s,border-color 0.3s;
+}
+.process-step:hover .step-num {
+  background:rgba(201,151,58,0.15);border-color:var(--gold);
+}
+.step-content { padding-top:12px }
+.step-content h3 {
+  font-family:'Cormorant Garamond',serif;font-size:22px;
+  font-weight:600;margin-bottom:8px;
+}
+.step-content p { font-size:14px;color:rgba(255,255,255,0.6);line-height:1.8 }
+
+/* ===== GALLERY ===== */
+.gallery-section {
+  padding:clamp(40px,6vw,80px) 0;
+  background:var(--ink);overflow:hidden;
+}
+.gallery-label { text-align:center;margin-bottom:32px;padding:0 24px }
+.gallery-track {
+  display:flex;gap:16px;
+  animation:scrollGallery 30s linear infinite;
+  width:max-content;
+}
+.gallery-track:hover { animation-play-state:paused }
+.gallery-img {
+  width:280px;height:180px;object-fit:cover;
+  border-radius:var(--r);flex-shrink:0;
+  filter:brightness(0.7) saturate(0.8);
+  transition:filter 0.3s,transform 0.3s;
+}
+.gallery-img:hover { filter:brightness(1) saturate(1);transform:scale(1.03) }
+@keyframes scrollGallery {
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials {
+  padding:clamp(60px,10vw,120px) 24px;
+  background:var(--ink2);position:relative;overflow:hidden;
+}
+.testimonials::before {
+  content:'';position:absolute;
+  top:-200px;right:-200px;
+  width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,151,58,0.06) 0%,transparent 70%);
+  pointer-events:none;
+}
+.test-inner { max-width:1000px;margin:0 auto }
+.test-grid {
+  display:grid;grid-template-columns:1fr;gap:20px;margin-top:48px;
+}
+@media(min-width:700px){.test-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.test-grid{grid-template-columns:repeat(3,1fr)}}
+.test-card {
+  background:var(--glass);border:1px solid var(--glassborder);
+  border-radius:var(--r2);padding:28px 24px;
+  transition:transform 0.3s;
+}
+.test-card:hover{transform:translateY(-4px)}
+.test-stars { color:var(--gold);font-size:13px;margin-bottom:14px;letter-spacing:2px }
+.test-text {
+  font-family:'Cormorant Garamond',serif;
+  font-size:17px;font-style:italic;
+  color:rgba(255,255,255,0.85);line-height:1.75;
+  margin-bottom:20px;
+}
+.test-author {
+  display:flex;align-items:center;gap:12px;
+  border-top:1px solid var(--glassborder);padding-top:16px;
+}
+.test-avatar {
+  width:40px;height:40px;border-radius:50%;
+  object-fit:cover;border:2px solid rgba(201,151,58,0.3);
+}
+.test-name { font-size:13px;font-weight:600 }
+.test-role { font-size:11px;color:rgba(255,255,255,0.4) }
+
+/* ===== CTA SECTION ===== */
+.cta-section {
+  padding:clamp(80px,12vw,140px) 24px;
+  background:linear-gradient(135deg,var(--bordo2) 0%,#0D000A 50%,var(--ink2) 100%);
+  position:relative;overflow:hidden;text-align:center;
+}
+.cta-section::before {
+  content:'';position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1400&q=60') center/cover;
+  opacity:0.05;
+}
+.cta-orb {
+  position:absolute;width:600px;height:600px;border-radius:50%;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(106,0,0,0.4) 0%,transparent 70%);
+  pointer-events:none;animation:orbPulse 5s ease-in-out infinite alternate;
+}
+.cta-inner { position:relative;z-index:1;max-width:680px;margin:0 auto }
+.cta-inner h2 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(30px,6vw,60px);font-weight:300;
+  line-height:1.2;margin-bottom:20px;
+}
+.cta-inner h2 em { font-style:italic;color:var(--gold2) }
+.cta-inner p {
+  font-size:16px;color:rgba(255,255,255,0.6);
+  line-height:1.8;margin-bottom:40px;
+}
+.cta-cards {
+  display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:40px;
+}
+.cta-card {
+  background:var(--glass);border:1px solid var(--glassborder);
+  border-radius:var(--r2);padding:20px 24px;
+  display:flex;align-items:center;gap:14px;
+  text-align:left;transition:transform 0.2s,border-color 0.2s;
+  min-width:200px;
+}
+.cta-card:hover{transform:translateY(-3px);border-color:rgba(201,151,58,0.3)}
+.cta-card-icon {
+  width:48px;height:48px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;
+}
+.cta-card-text span { font-size:11px;color:rgba(255,255,255,0.4);display:block;margin-bottom:2px }
+.cta-card-text strong { font-size:14px;font-weight:600 }
+.cta-main-btn {
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:var(--ink);padding:16px 36px;border-radius:30px;
+  font-size:15px;font-weight:700;
+  box-shadow:0 8px 40px rgba(201,151,58,0.45);
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.cta-main-btn:hover{transform:translateY(-3px);box-shadow:0 14px 50px rgba(201,151,58,0.55)}
+
+/* ===== FOOTER ===== */
+footer {
+  background:#060310;
+  padding:48px 24px 32px;
+  border-top:1px solid rgba(201,151,58,0.1);
+}
+.footer-inner {
+  max-width:900px;margin:0 auto;
+  display:flex;flex-direction:column;align-items:center;gap:24px;
+  text-align:center;
+}
+.footer-logo-row { display:flex;align-items:center;gap:12px }
+.footer-logo-row img { width:36px;height:36px;object-fit:contain;border-radius:8px }
+.footer-logo-row span {
+  font-family:'Cormorant Garamond',serif;font-size:14px;
+  color:rgba(255,255,255,0.6);
+}
+.footer-links { display:flex;gap:20px;flex-wrap:wrap;justify-content:center }
+.footer-links a {
+  font-size:13px;color:rgba(255,255,255,0.4);
+  display:flex;align-items:center;gap:6px;
+  transition:color 0.2s;
+}
+.footer-links a:hover{color:var(--gold2)}
+.footer-by {
+  font-size:12px;color:rgba(255,255,255,0.25);
+  border-top:1px solid rgba(255,255,255,0.06);
+  padding-top:20px;width:100%;
+}
+.footer-by a { color:var(--gold);transition:color 0.2s }
+.footer-by a:hover{color:var(--gold2)}
+
+/* ===== FLOATING WA ===== */
+.fab-wa {
+  position:fixed;bottom:28px;right:28px;z-index:999;
+  width:56px;height:56px;border-radius:50%;
+  background:#25D366;color:white;
+  display:flex;align-items:center;justify-content:center;font-size:26px;
+  box-shadow:0 6px 30px rgba(37,211,102,0.5);
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.fab-wa:hover{transform:scale(1.1);box-shadow:0 10px 40px rgba(37,211,102,0.6)}
+
+/* ===== REVEAL ANIMATION ===== */
+.reveal {
+  opacity:0;transform:translateY(40px);
+  transition:opacity 0.8s ease,transform 0.8s ease;
+}
+.reveal.visible {opacity:1;transform:translateY(0)}
+.reveal-left {
+  opacity:0;transform:translateX(-50px);
+  transition:opacity 0.8s ease,transform 0.8s ease;
+}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right {
+  opacity:0;transform:translateX(50px);
+  transition:opacity 0.8s ease,transform 0.8s ease;
+}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+
+/* ===== MOBILE ===== */
+@media(max-width:599px){
+  .pkg-content { padding:40px 24px }
+  .nav { padding:12px 16px }
+  .why-card { padding:24px 18px }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== NAV ===== -->
+<nav class="nav" id="nav">
+  <div class="nav-brand">
+    <img src="https://raw.githubusercontent.com/Samir210-az/an-merkezi/main/logo.png" alt="AN Mərkəzi">
+    <div class="nav-brand-text">AN Psixoloji Dəstək<br>və Reabilitasiya Mərkəzi</div>
+  </div>
+  <div class="nav-right">
+    <button class="lang-btn active" onclick="setLang('az')">AZ</button>
+    <button class="lang-btn" onclick="setLang('ru')">RU</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+    <a href="https://www.instagram.com/an_psixologiyamerkezi" target="_blank" class="nav-ig">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://wa.me/994554157215" class="nav-cta btn-gold" target="_blank">
+      <i class="fab fa-whatsapp"></i>
+      <span data-az="Yazın" data-ru="Написать" data-en="Contact"></span>
+    </a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="hero-bg-layer" id="heroLayer1"></div>
+  <div class="hero-photo-layer" id="heroLayer2"></div>
+  <div class="hero-particles" id="particles"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-orb hero-orb-3"></div>
+  <div class="hero-shape hs1"></div>
+  <div class="hero-shape hs2"></div>
+  <div class="hero-shape hs3"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow" id="hEyebrow">
+      <i class="fas fa-star" style="font-size:10px"></i>
+      <span data-az="AN Psixoloji Mərkəzinin Xüsusi Proqramları" data-ru="Специальные Программы АН Центра" data-en="Special Programs by AN Centre"></span>
+    </div>
+    <img src="https://raw.githubusercontent.com/Samir210-az/an-merkezi/main/logo.png" alt="AN" class="hero-logo" id="hLogo">
+    <h1 class="hero-title" id="hTitle">
+      <span data-az="Hər uşağın içindəki" data-ru="Внутри каждого ребёнка" data-en="Inside every child"></span>
+      <em data-az="böyük potensial" data-ru="скрыт великий потенциал" data-en="lies great potential"></em>
+      <strong data-az="gizlənib." data-ru="" data-en=""></strong>
+    </h1>
+    <p class="hero-sub" id="hSub">
+      <span data-az="4 xüsusi proqram ilə uşağınızın gələcəyini formalaşdırın. Erkən müdaxilə, peşə yönümü, xüsusi qayğı və valideyn dəstəyi — hamısı bir çatı altında." data-ru="4 специальные программы для будущего вашего ребёнка. Ранняя интервенция, профессиональная ориентация, особый уход и поддержка родителей — всё под одной крышей." data-en="Shape your child's future with 4 special programs. Early intervention, career guidance, special care and parent support — all under one roof."></span>
+    </p>
+    <div class="hero-btns" id="hBtns">
+      <a href="#packages" class="btn-gold">
+        <i class="fas fa-sparkles" style="font-size:12px"></i>
+        <span data-az="Proqramlara bax" data-ru="Смотреть программы" data-en="View programs"></span>
+      </a>
+      <a href="https://wa.me/994554157215" class="btn-outline" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span data-az="Məsləhət al" data-ru="Получить консультацию" data-en="Get consultation"></span>
+      </a>
+    </div>
+    <div class="hero-stats" id="hStats">
+      <div class="stat-item">
+        <span class="stat-num">200+</span>
+        <span class="stat-lbl" data-az="Ailə" data-ru="Семей" data-en="Families"></span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">4</span>
+        <span class="stat-lbl" data-az="Proqram" data-ru="Программы" data-en="Programs"></span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">7+</span>
+        <span class="stat-lbl" data-az="İl təcrübə" data-ru="Лет опыта" data-en="Years exp."></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-ind">
+    <span data-az="Aşağı diyirla" data-ru="Прокрутите вниз" data-en="Scroll down"></span>
+    <span class="arrow">↓</span>
+  </div>
+</section>
+
+<!-- ===== INTRO BAND ===== -->
+<div class="intro-band reveal">
+  <div class="intro-band-inner">
+    <h2 data-az='"Hər uşaq xüsusidir — ona xüsusi yanaşma lazımdır."' data-ru='"Каждый ребёнок особенный — ему нужен особый подход."' data-en='"Every child is unique — they deserve a unique approach."'></h2>
+    <div class="gold-line"></div>
+    <p data-az="AN Psixoloji Dəstək Mərkəzinin komandası olaraq, biz hər uşağın fərdi inkişaf yolunu dəstəkləyirik." data-ru="Команда АН Психологического Центра поддерживает индивидуальный путь развития каждого ребёнка." data-en="As the AN Psychological Support Centre team, we support each child's individual developmental journey."></p>
+  </div>
+</div>
+
+<!-- ===== PACKAGES ===== -->
+<div id="packages">
+
+<!-- PKG 1: MƏKTƏBƏ HAZIRLIĞ -->
+<section class="pkg-section pkg-1">
+  <div class="pkg-photo" id="pkg1photo">
+    <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=900&q=80&fit=crop&crop=faces" alt="Məktəbə hazırlıq" id="pimg1">
+    <div class="pkg-photo-overlay"></div>
+    <div class="pkg-photo-num">01</div>
+  </div>
+  <div class="pkg-content reveal-right">
+    <div class="pkg-badge">
+      <i class="fas fa-seedling"></i>
+      <span data-az="Proqram 01" data-ru="Программа 01" data-en="Program 01"></span>
+    </div>
+    <span class="pkg-icon-big">🏫</span>
+    <h2 class="pkg-title" data-az="Məktəbə Hazırlıq Paketi" data-ru="Пакет Подготовки к Школе" data-en="School Readiness Package"></h2>
+    <p class="pkg-desc" data-az="Uşağınızın məktəb həyatına uğurla qədəm qoyması üçün hərtərəfli psixoloji və akademik hazırlıq proqramı. İdrak bacarıqları, emosional tənzimlənmə və sosial uyum bir arada." data-ru="Комплексная программа психологической и академической подготовки для успешного начала школьной жизни вашего ребёнка. Когнитивные навыки, эмоциональная регуляция и социальная адаптация в одном." data-en="A comprehensive psychological and academic preparation program for your child's successful start to school life. Cognitive skills, emotional regulation, and social adaptation all in one."></p>
+    <div class="pkg-features">
+      <div class="pkg-feat">
+        <div class="feat-dot"><i class="fas fa-check"></i></div>
+        <span data-az="Fərdi psixo-pedaqoji qiymətləndirmə" data-ru="Индивидуальная психо-педагогическая оценка" data-en="Individual psycho-pedagogical assessment"></span>
+      </div>
+      <div class="pkg-feat">
+        <div class="feat-dot"><i class="fas fa-check"></i></div>
+        <span data-az="İdrak və diqqət inkişafı məşğələləri" data-ru="Занятия по развитию когнитивных функций и внимания" data-en="Cognitive and attention development sessions"></span>
+      </div>
+      <div class="pkg-feat">
+        <div class="feat-dot"><i class="fas fa-check"></i></div>
+        <span data-az="Sosiallaşma və emosional hazırlıq" data-ru="Социализация и эмоциональная готовность" data-en="Socialization and emotional readiness"></span>
+      </div>
+      <div class="pkg-feat">
+        <div class="feat-dot"><i class="fas fa-check"></i></div>
+        <span data-az="Valideynlər üçün tövsiyə sessiyaları" data-ru="Рекомендационные сессии для родителей" data-en="Recommendation sessions for parents"></span>
+      </div>
+    </div>
+    <div class="pkg-cta-row">
+      <a href="https://wa.me/994554157215?text=Məktəbə hazırlıq paketi haqqında məlumat almaq istəyirəm" target="_blank" class="pkg-btn">
+        <i class="fab fa-whatsapp"></i>
+        <span data-az="Qeydiyyat" data-ru="Записаться" data-en="Register"></span>
+      </a>
+      <a href="tel:+994554157215" class="pkg-wa">
+        <i class="fas fa-phone"></i> +994 55 415 72 15
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PKG 2: PEŞƏ YÖNÜMİ -->
+<section class="pkg-section pkg-2">
+  <div class="pkg-content reveal-left">
+    <div class="pkg-badge">
+      <i class="fas fa-compass"></i>
+      <span data-az="Proqram 02" data-ru="Программа 02" data-en="Program 02"></span>
+    </div>
+    <span class="pkg-icon-big">🧭</span>
+    <h2 class="pkg-title" data-az="Yeniyetmələr üçün Peşə Yönümü Paketi" data-ru="Пакет Профессиональной Ориентации для Подростков" data-en="Career Guidance Package for Teenagers"></h2>
+    <p class="pkg-desc" data-az="Yeniyetmənizdəki gizli istedadları kəşf edin. Psixoloji testlər, maraq analizi və peşə dünyası ilə tanışlıq vasitəsilə gələcək yolunu birlikdə müəyyənləşdirək." data-ru="Откройте скрытые таланты вашего подростка. С помощью психологических тестов, анализа интересов и знакомства с миром профессий определим будущий путь вместе." data-en="Discover the hidden talents in your teenager. Through psychological tests, interest analysis, and exploring the professional world, let's determine the future path together."></p>
+    <div class="pkg-features">
+      <div class="pkg-feat">
+        <div class="feat-dot"><i class="fas fa-check"></i></div>
+        <span data-az="Professional meyl və istedad testləri" data-ru="Тесты профессиональных склонностей и талантов" data-en="Professional aptitude and talent tests"></span>
+      </div>
+      <div class="pkg-feat">
+        <div class="feat-dot"><i class="fas fa-check"></i></div>
+        <span data-az="Fərdi güclü tərəflərin müəyyənləşdirilməsi" data-ru="Определение индивидуальных сильных сторон" data-en="Identification of individual strengths"></span>
+      </div>
+      <div class="pkg-feat">
+        <div class="feat-dot"><i class="fas fa-check"></i></div>
+        <span data-az="Peşə dünyası ilə tanışlıq seanları" data-ru="Сессии знакомства с миром профессий" data-en="Sessions exploring the professional world"></span>
+      </div>
+      <div class="pkg-feat">
+        <div class="feat-dot"><i class="fas fa-check"></i></div>
+        <span data-az="Gələcək planlaması və hədəf qoyma" data-ru="Планирование будущего и постановка целей" data-en="Future planning and goal setting"></span>
+      </div>
+    </div>
+    <div class="pkg-cta-row">
+      <a href="https://wa.me/994554157215?text=Peşə yönümü paketi haqqında məlumat almaq istəyirəm" target="_blank" class="pkg-btn">
+        <i class="fab fa-whatsapp"></i>
+        <span data-az="Qeydiyyat" data-ru="Записаться" data-en="Register"></span>
+      </a>
+      <a href="tel:+994554157215" class="pkg-wa">
+        <i class="fas fa-phone"></i> +994 55 415 72 15
+      </a>
+    </div>
+  </div>
+  <div class="pkg-photo" id="pkg2photo">
+    <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?w=900&q=80&fit=crop&crop=faces" alt="Peşə yönümü" id="pimg2">
+    <div class="pkg-photo-overlay"></div>
+    <div class="pkg-photo-num">02</div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PKG 3: XÜSUSİ QAYĞI -->
+<section class="pkg-section pkg-3">
+  <div class="pkg-photo" id="pkg3photo">
+    <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=900&q=80&fit=crop&crop=faces" alt="Xüsusi qayğı" id="pimg3">
+    <div class="pkg-photo-overlay"></div>
+    <div class="pkg-photo-num">03</div>
+  </div>
+  <div class="pkg-content reveal-right">
+    <div class="pkg-badge">
+      <i class="fas fa-heart"></i>
+      <span data-az="Proqram 03" data-ru="Программа 03" data-en="Program 03"></span>
+    </div>
+    <span class="pkg-icon-big">💛</span>
+    <h2 class="pkg-title" data-az="Xüsusi Qayğıya Ehtiyacı Olan Uşaqlar üçün Kompleks Qiymətləndirmə" data-ru="Комплексная Оценка для Детей с Особыми Потребностями" data-en="Comprehensive Assessment for Children with Special Needs"></h2>
+    <p class="pkg-desc" data-az="Xüsusi ehtiyacı olan hər uşaq üçün fərdi yanaşma. Hərtərəfli qiymətləndirmə ilə güclü tərəflər müəyyən edilir, fərdi inkişaf planı hazırlanır." data-ru="Индивидуальный подход для каждого ребёнка с особыми потребностями. Комплексная оценка определяет сильные стороны, разрабатывается индивидуальный план развития." data-en="An individual approach for every child with special needs. Comprehensive assessment identifies strengths, and an individual development plan is created."></p>
+    <div class="pkg-features">
+      <div class="pkg-feat">
+        <div class="feat-dot"><i class="fas fa-check"></i></div>
+        <span data-az="Multidissiplinar komanda tərəfindən qiymətləndirmə" data-ru="Оценка мультидисциплинарной командой" data-en="Assessment by multidisciplinary team"></span>
+      </div>
+      <div class="pkg-feat">
+        <div class="feat-dot"><i class="fas fa-check"></i></div>
+        <span data-az="Fərdi inkişaf proqramının hazırlanması" data-ru="Разработка индивидуальной программы развития" data-en="Individual development program creation"></span>
+      </div>
+      <div class="pkg-feat">
+        <div class="feat-dot"><i class="fas fa-check"></i></div>
+        <span data-az="Nitq, motor və idrak inkişafı dəstəyi" data-ru="Поддержка речи, моторики и когнитивного развития" data-en="Speech, motor and cognitive development support"></span>
+      </div>
+      <div class="pkg-feat">
+        <div class="feat-dot"><i class="fas fa-check"></i></div>
+        <span data-az="Daimi monitorinq və hesabat" data-ru="Постоянный мониторинг и отчётность" data-en="Continuous monitoring and reporting"></span>
+      </div>
+    </div>
+    <div class="pkg-cta-row">
+      <a href="https://wa.me/994554157215?text=Xüsusi qayğı paketi haqqında məlumat almaq istəyirəm" target="_blank" class="pkg-btn">
+        <i class="fab fa-whatsapp"></i>
+        <span data-az="Qeydiyyat" data-ru="Записаться" data-en="Register"></span>
+      </a>
+      <a href="tel:+994554157215" class="pkg-wa">
+        <i class="fas fa-phone"></i> +994 55 415 72 15
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PKG 4: VALİDEYN MƏSLƏHƏTİ -->
+<section class="pkg-section pkg-4">
+  <div class="pkg-content reveal-left">
+    <div class="pkg-badge">
+      <i class="fas fa-hands-holding-child"></i>
+      <span data-az="Proqram 04" data-ru="Программа 04" data-en="Program 04"></span>
+    </div>
+    <span class="pkg-icon-big">👨‍👩‍👧</span>
+    <h2 class="pkg-title" data-az="Valideyn Məsləhət Xidməti" data-ru="Консультационная Служба для Родителей" data-en="Parent Consultation Service"></h2>
+    <p class="pkg-desc" data-az="Uşağınızın yanında ən güclü dayağınız — siz olmalısınız. Valideyn olaraq özünüzü necə inkişaf etdirəcəyinizi, uşağınızla necə ünsiyyət quracağınızı öyrənin." data-ru="Самая сильная опора для вашего ребёнка — это вы. Узнайте, как развиваться как родитель и как выстроить правильную коммуникацию с ребёнком." data-en="The strongest support for your child is you. Learn how to develop yourself as a parent and how to communicate effectively with your child."></p>
+    <div class="pkg-features">
+      <div class="pkg-feat">
+        <div class="feat-dot"><i class="fas fa-check"></i></div>
+        <span data-az="Fərdi valideyn psixoloji məsləhəti" data-ru="Индивидуальные психологические консультации для родителей" data-en="Individual psychological parent consultations"></span>
+      </div>
+      <div class="pkg-feat">
+        <div class="feat-dot"><i class="fas fa-check"></i></div>
+        <span data-az="Uşaqla ünsiyyət bacarıqlarının inkişafı" data-ru="Развитие навыков общения с ребёнком" data-en="Child communication skills development"></span>
+      </div>
+      <div class="pkg-feat">
+        <div class="feat-dot"><i class="fas fa-check"></i></div>
+        <span data-az="Stres idarəetməsi və tükənmişlik profilaktikası" data-ru="Управление стрессом и профилактика выгорания" data-en="Stress management and burnout prevention"></span>
+      </div>
+      <div class="pkg-feat">
+        <div class="feat-dot"><i class="fas fa-check"></i></div>
+        <span data-az="Qrup məsləhət sessiyaları (valideyn klubu)" data-ru="Групповые консультационные сессии (клуб родителей)" data-en="Group consultation sessions (parent club)"></span>
+      </div>
+    </div>
+    <div class="pkg-cta-row">
+      <a href="https://wa.me/994554157215?text=Valideyn məsləhəti xidməti haqqında məlumat almaq istəyirəm" target="_blank" class="pkg-btn">
+        <i class="fab fa-whatsapp"></i>
+        <span data-az="Qeydiyyat" data-ru="Записаться" data-en="Register"></span>
+      </a>
+      <a href="tel:+994554157215" class="pkg-wa">
+        <i class="fas fa-phone"></i> +994 55 415 72 15
+      </a>
+    </div>
+  </div>
+  <div class="pkg-photo" id="pkg4photo">
+    <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=900&q=80&fit=crop&crop=faces" alt="Valideyn məsləhəti" id="pimg4">
+    <div class="pkg-photo-overlay"></div>
+    <div class="pkg-photo-num">04</div>
+  </div>
+</section>
+
+</div><!-- /packages -->
+
+<!-- ===== WHY SECTION ===== -->
+<section class="why-section">
+  <div class="why-inner">
+    <span class="section-label reveal" data-az="Niyə biz?" data-ru="Почему мы?" data-en="Why us?"></span>
+    <h2 class="section-title reveal" data-az='Fərqimiz <em>nədədir?</em>' data-ru='В чём наше <em>отличие?</em>' data-en='What makes us <em>different?</em>'></h2>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <span class="why-icon">🧠</span>
+        <h3 data-az="Elmi əsaslı yanaşma" data-ru="Научно обоснованный подход" data-en="Science-based approach"></h3>
+        <p data-az="Beynəlxalq standartlara uyğun metodlar, sübut olunmuş psixoloji texnikalar." data-ru="Методы, соответствующие международным стандартам, проверенные психологические техники." data-en="Methods aligned with international standards, proven psychological techniques."></p>
+      </div>
+      <div class="why-card reveal" style="transition-delay:0.1s">
+        <span class="why-icon">👤</span>
+        <h3 data-az="Fərdi yanaşma" data-ru="Индивидуальный подход" data-en="Individual approach"></h3>
+        <p data-az="Hər uşaq fərqlidir. Proqramlar tamamilə fərdi ehtiyaclara uyğun hazırlanır." data-ru="Каждый ребёнок уникален. Программы разрабатываются строго под индивидуальные потребности." data-en="Every child is different. Programs are tailored to individual needs."></p>
+      </div>
+      <div class="why-card reveal" style="transition-delay:0.2s">
+        <span class="why-icon">🤝</span>
+        <h3 data-az="Ailə ilə birlikdə" data-ru="Вместе с семьёй" data-en="Together with family"></h3>
+        <p data-az="Valideynlər prosesin aktiv iştirakçısıdır. Birgə nəticə daha güclüdür." data-ru="Родители являются активными участниками процесса. Совместный результат сильнее." data-en="Parents are active participants in the process. Results together are stronger."></p>
+      </div>
+      <div class="why-card reveal" style="transition-delay:0.3s">
+        <span class="why-icon">📊</span>
+        <h3 data-az="Ölçülə bilən nəticə" data-ru="Измеримые результаты" data-en="Measurable results"></h3>
+        <p data-az="Hər sessiyadan sonra hesabat, hər ayda inkişaf dinamikası, şəffaf prosess." data-ru="Отчёт после каждой сессии, динамика развития ежемесячно, прозрачный процесс." data-en="Report after each session, monthly development dynamics, transparent process."></p>
+      </div>
+      <div class="why-card reveal" style="transition-delay:0.4s">
+        <span class="why-icon">🏆</span>
+        <h3 data-az="Təcrübəli komanda" data-ru="Опытная команда" data-en="Experienced team"></h3>
+        <p data-az="7+ il sahə təcrübəsi olan psixoloqlar, pedaqoqlar və mütəxəssislər." data-ru="Психологи, педагоги и специалисты с опытом работы 7+ лет в данной области." data-en="Psychologists, pedagogues and specialists with 7+ years of field experience."></p>
+      </div>
+      <div class="why-card reveal" style="transition-delay:0.5s">
+        <span class="why-icon">📍</span>
+        <h3 data-az="Əlçatan məkan" data-ru="Удобное расположение" data-en="Accessible location"></h3>
+        <p data-az="Bakı mərkəzindəyik. Həm üz-üzə, həm də onlayn sessiyalar mövcuddur." data-ru="Мы в центре Баку. Доступны как очные, так и онлайн-сессии." data-en="We are in central Baku. Both in-person and online sessions available."></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROCESS ===== -->
+<section class="process-section">
+  <div class="process-inner">
+    <span class="section-label reveal" data-az="Necə işləyir?" data-ru="Как это работает?" data-en="How it works?"></span>
+    <h2 class="section-title reveal" data-az='Sadə <em>4 addım</em>' data-ru='Простые <em>4 шага</em>' data-en='Simple <em>4 steps</em>'></h2>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3 data-az="Əlaqə saxlayın" data-ru="Свяжитесь с нами" data-en="Contact us"></h3>
+          <p data-az="WhatsApp və ya telefon vasitəsilə bizimlə əlaqə saxlayın. İlk məsləhət pulsuzdur." data-ru="Свяжитесь с нами через WhatsApp или по телефону. Первая консультация бесплатна." data-en="Contact us via WhatsApp or phone. The first consultation is free."></p>
+        </div>
+      </div>
+      <div class="process-step reveal" style="transition-delay:0.1s">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3 data-az="İlkin qiymətləndirmə" data-ru="Первичная оценка" data-en="Initial assessment"></h3>
+          <p data-az="Mütəxəssisimiz uşağın ehtiyaclarını müəyyənləşdirir, uyğun proqramı tövsiyə edir." data-ru="Наш специалист определяет потребности ребёнка, рекомендует подходящую программу." data-en="Our specialist identifies the child's needs and recommends the appropriate program."></p>
+        </div>
+      </div>
+      <div class="process-step reveal" style="transition-delay:0.2s">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3 data-az="Fərdi proqram" data-ru="Индивидуальная программа" data-en="Individual program"></h3>
+          <p data-az="Uşağınız üçün xüsusi hazırlanmış proqram işə başlayır. Seans vaxtları ailənizə uyğun seçilir." data-ru="Запускается программа, разработанная специально для вашего ребёнка. Время сеансов выбирается с учётом расписания семьи." data-en="A program specially designed for your child begins. Session times are chosen to suit your family."></p>
+        </div>
+      </div>
+      <div class="process-step reveal" style="transition-delay:0.3s">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3 data-az="İzləmə və nəticə" data-ru="Мониторинг и результат" data-en="Monitoring and results"></h3>
+          <p data-az="Hər ay inkişaf dinamikası sizinlə paylaşılır. Proqram uşağın inkişafına uyğun tənzimlənir." data-ru="Динамика развития ежемесячно передаётся вам. Программа адаптируется под прогресс ребёнка." data-en="Monthly development dynamics are shared with you. The program is adjusted according to the child's progress."></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section class="gallery-section">
+  <div class="gallery-label">
+    <span class="section-label" data-az="Mərkəzimizdən görüntülər" data-ru="Из нашего центра" data-en="From our centre"></span>
+  </div>
+  <div class="gallery-track" id="galleryTrack">
+    <img class="gallery-img" src="https://images.unsplash.com/photo-1560969184-10fe8719e047?w=600&q=70&fit=crop" alt="">
+    <img class="gallery-img" src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600&q=70&fit=crop" alt="">
+    <img class="gallery-img" src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?w=600&q=70&fit=crop" alt="">
+    <img class="gallery-img" src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&q=70&fit=crop" alt="">
+    <img class="gallery-img" src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&q=70&fit=crop" alt="">
+    <img class="gallery-img" src="https://images.unsplash.com/photo-1529390079861-591de354faf5?w=600&q=70&fit=crop" alt="">
+    <img class="gallery-img" src="https://raw.githubusercontent.com/Samir210-az/site/main/office.jpg" alt="AN Mərkəzi">
+    <!-- duplicate for infinite scroll -->
+    <img class="gallery-img" src="https://images.unsplash.com/photo-1560969184-10fe8719e047?w=600&q=70&fit=crop" alt="">
+    <img class="gallery-img" src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600&q=70&fit=crop" alt="">
+    <img class="gallery-img" src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?w=600&q=70&fit=crop" alt="">
+    <img class="gallery-img" src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&q=70&fit=crop" alt="">
+    <img class="gallery-img" src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&q=70&fit=crop" alt="">
+    <img class="gallery-img" src="https://images.unsplash.com/photo-1529390079861-591de354faf5?w=600&q=70&fit=crop" alt="">
+    <img class="gallery-img" src="https://raw.githubusercontent.com/Samir210-az/site/main/office.jpg" alt="AN Mərkəzi">
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="testimonials">
+  <div class="test-inner">
+    <span class="section-label reveal" data-az="Ailə rəyləri" data-ru="Отзывы семей" data-en="Family reviews"></span>
+    <h2 class="section-title reveal" data-az='Onlar <em>danışır</em>' data-ru='Они <em>говорят</em>' data-en='They <em>speak</em>'></h2>
+    <div class="test-grid">
+      <div class="test-card reveal">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text" data-az='"Oğlum məktəbə başlamazdan əvvəl çox narahat idi. AN mərkəzinin proqramı sayəsində indi sinfin ən fəal şagirdidir."' data-ru='"Мой сын очень волновался перед школой. Благодаря программе AN центра теперь он самый активный ученик в классе."' data-en='"My son was very anxious before school. Thanks to the AN centre program, he is now the most active student in the class."'></p>
+        <div class="test-author">
+          <img class="test-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&q=70&fit=crop&crop=face" alt="">
+          <div>
+            <div class="test-name">Nərmin X.</div>
+            <div class="test-role" data-az="Valideyn" data-ru="Родитель" data-en="Parent"></div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card reveal" style="transition-delay:0.1s">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text" data-az='"Qızımın hansı peşəni seçəcəyini bilmirdik. Peşə yönümü paketi bu suala cavab verdi. İndi məqsədi var!"' data-ru='"Мы не знали, какую профессию выберет наша дочь. Пакет профориентации ответил на этот вопрос. Теперь у неё есть цель!"' data-en='"We did not know what profession our daughter would choose. The career guidance package answered this question. Now she has a goal!"'></p>
+        <div class="test-author">
+          <img class="test-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=70&fit=crop&crop=face" alt="">
+          <div>
+            <div class="test-name">Tural M.</div>
+            <div class="test-role" data-az="Valideyn" data-ru="Родитель" data-en="Parent"></div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card reveal" style="transition-delay:0.2s">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text" data-az='"Xüsusi ehtiyaclı uşağım üçün fərdi plan hazırlandı. Peşəkarlar həqiqətən hər detalı düşünüb. Çox minnətdarıq."' data-ru='"Для моего ребёнка с особыми потребностями был разработан индивидуальный план. Специалисты действительно продумали каждую деталь. Очень благодарны."' data-en='"An individual plan was created for my child with special needs. The professionals truly thought of every detail. We are very grateful."'></p>
+        <div class="test-author">
+          <img class="test-avatar" src="https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=80&q=70&fit=crop&crop=face" alt="">
+          <div>
+            <div class="test-name">Günel S.</div>
+            <div class="test-role" data-az="Valideyn" data-ru="Родитель" data-en="Parent"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section">
+  <div class="cta-orb"></div>
+  <div class="cta-inner">
+    <h2 class="reveal" data-az='Uşağınızın <em>gələcəyi</em> bu gün başlayır' data-ru='Будущее вашего ребёнка <em>начинается</em> сегодня' data-en="Your child's <em>future</em> starts today"></h2>
+    <p class="reveal" data-az="İlk addımı atmaq üçün əlaqə saxlayın. İlk məsləhət səhifəsini pulsuzdur." data-ru="Свяжитесь с нами, чтобы сделать первый шаг. Первая консультационная сессия бесплатна." data-en="Contact us to take the first step. The first consultation session is free."></p>
+    <div class="cta-cards reveal">
+      <a class="cta-card" href="tel:+994554157215">
+        <div class="cta-card-icon" style="background:rgba(201,151,58,0.15)">📞</div>
+        <div class="cta-card-text">
+          <span data-az="Telefon" data-ru="Телефон" data-en="Phone"></span>
+          <strong>+994 55 415 72 15</strong>
+        </div>
+      </a>
+      <a class="cta-card" href="https://wa.me/994554157215" target="_blank">
+        <div class="cta-card-icon" style="background:rgba(37,211,102,0.15)">💬</div>
+        <div class="cta-card-text">
+          <span>WhatsApp</span>
+          <strong data-az="Yazın — cavab veririk" data-ru="Пишите — отвечаем" data-en="Write — we reply"></strong>
+        </div>
+      </a>
+      <a class="cta-card" href="https://www.instagram.com/an_psixologiyamerkezi" target="_blank">
+        <div class="cta-card-icon" style="background:rgba(188,24,136,0.15)">📸</div>
+        <div class="cta-card-text">
+          <span>Instagram</span>
+          <strong>@an_psixologiyamerkezi</strong>
+        </div>
+      </a>
+    </div>
+    <a href="https://wa.me/994554157215" class="cta-main-btn reveal" target="_blank">
+      <i class="fab fa-whatsapp" style="font-size:18px"></i>
+      <span data-az="İndi müraciət edin — pulsuz məsləhət" data-ru="Обратитесь сейчас — бесплатная консультация" data-en="Apply now — free consultation"></span>
+    </a>
+    <p class="reveal" style="margin-top:16px;font-size:12px;color:rgba(255,255,255,0.3)" data-az="📍 Bakı, Nizami r., Rizvan Teymurov 59" data-ru="📍 Баку, р. Низами, ул. Ризван Теймуров 59" data-en="📍 Baku, Nizami dist., Rizvan Teymurov 59"></p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo-row">
+      <img src="https://raw.githubusercontent.com/Samir210-az/an-merkezi/main/logo.png" alt="AN">
+      <span data-az="AN Psixoloji Dəstək və Reabilitasiya Mərkəzi" data-ru="АН Психологический Центр Поддержки и Реабилитации" data-en="AN Psychological Support and Rehabilitation Centre"></span>
+    </div>
+    <div class="footer-links">
+      <a href="tel:+994554157215"><i class="fas fa-phone"></i> +994 55 415 72 15</a>
+      <a href="https://www.instagram.com/an_psixologiyamerkezi" target="_blank"><i class="fab fa-instagram"></i> @an_psixologiyamerkezi</a>
+      <a href="https://wa.me/994554157215" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      <a href="https://www.google.com/maps/search/Rizvan+Teymurov+59+Bakı" target="_blank"><i class="fas fa-map-marker-alt"></i> <span data-az="Xəritədə gör" data-ru="Посмотреть на карте" data-en="View on map"></span></a>
+    </div>
+    <div class="footer-by">
+      <span data-az="Hazırladı" data-ru="Разработано" data-en="Developed by"></span>:
+      <a href="https://www.instagram.com/s_akhundoff" target="_blank">@s_akhundoff</a>
+      &nbsp;·&nbsp; AN Psixoloji Mərkəzi üçün xüsusi proekt · 2025
+    </div>
+  </div>
+</footer>
+
+<!-- FAB -->
+<a class="fab-wa" href="https://wa.me/994554157215" target="_blank" title="WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- ===== SCRIPTS ===== -->
+<script>
+// ===== LANGUAGE =====
+var currentLang = 'az';
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('[data-az]').forEach(function(el) {
+    var txt = el.getAttribute('data-' + lang) || el.getAttribute('data-az');
+    if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+      el.placeholder = txt;
+    } else {
+      // handle innerHTML for em tags
+      if(txt.includes('<em>')) {
+        el.innerHTML = txt;
+      } else {
+        el.textContent = txt;
+      }
+    }
+  });
+  document.querySelectorAll('.lang-btn').forEach(function(b) {
+    b.classList.remove('active');
+  });
+  var active = document.querySelector('.lang-btn:nth-child(' + (lang==='az'?1:lang==='ru'?2:3) + ')');
+  if(active) active.classList.add('active');
+}
+// init
+document.addEventListener('DOMContentLoaded', function(){ setLang('az'); });
+
+// ===== NAV SCROLL =====
+window.addEventListener('scroll', function() {
+  var nav = document.getElementById('nav');
+  if(window.scrollY > 60) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+
+// ===== HERO PARALLAX =====
+window.addEventListener('scroll', function() {
+  var sy = window.scrollY;
+  var l1 = document.getElementById('heroLayer1');
+  var l2 = document.getElementById('heroLayer2');
+  if(l1) l1.style.transform = 'translateY(' + (sy * 0.3) + 'px)';
+  if(l2) l2.style.transform = 'translateY(' + (sy * 0.5) + 'px) scale(1.05)';
+
+  // Package photo parallax
+  var imgs = ['pimg1','pimg2','pimg3','pimg4'];
+  imgs.forEach(function(id) {
+    var el = document.getElementById(id);
+    if(!el) return;
+    var rect = el.closest('.pkg-photo').getBoundingClientRect();
+    var center = rect.top + rect.height / 2 - window.innerHeight / 2;
+    el.style.transform = 'translateY(' + (center * 0.12) + 'px) scale(1.08)';
+  });
+});
+
+// ===== PARTICLES =====
+(function createParticles() {
+  var container = document.getElementById('particles');
+  if(!container) return;
+  for(var i = 0; i < 25; i++) {
+    var p = document.createElement('div');
+    p.className = 'particle';
+    var size = Math.random() * 4 + 2;
+    p.style.cssText = [
+      'width:' + size + 'px',
+      'height:' + size + 'px',
+      'left:' + Math.random() * 100 + '%',
+      'bottom:' + (Math.random() * 30) + '%',
+      'animation-duration:' + (Math.random() * 8 + 6) + 's',
+      'animation-delay:' + (Math.random() * 6) + 's',
+      'opacity:0'
+    ].join(';');
+    container.appendChild(p);
+  }
+})();
+
+// ===== HERO ANIMATIONS (CSS-based, no GSAP dependency) =====
+document.addEventListener('DOMContentLoaded', function() {
+  function animateHero() {
+    var items = [
+      {id:'hEyebrow', delay:200},
+      {id:'hLogo', delay:400},
+      {id:'hTitle', delay:600},
+      {id:'hSub', delay:800},
+      {id:'hBtns', delay:1000},
+      {id:'hStats', delay:1200}
+    ];
+    items.forEach(function(item) {
+      setTimeout(function() {
+        var el = document.getElementById(item.id);
+        if(el) {
+          el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        }
+      }, item.delay);
+    });
+  }
+  animateHero();
+});
+
+// ===== SCROLL REVEAL =====
+function checkReveal() {
+  var revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  revealEls.forEach(function(el) {
+    var rect = el.getBoundingClientRect();
+    if(rect.top < window.innerHeight - 80) {
+      el.classList.add('visible');
+    }
+  });
+}
+window.addEventListener('scroll', checkReveal);
+window.addEventListener('load', checkReveal);
+setTimeout(checkReveal, 500);
+
+// ===== PKG PHOTO HOVER =====
+document.querySelectorAll('.pkg-section').forEach(function(sec) {
+  var img = sec.querySelector('.pkg-photo img');
+  if(!img) return;
+  sec.addEventListener('mouseenter', function() {
+    img.style.transform = 'scale(1.06)';
+  });
+  sec.addEventListener('mouseleave', function() {
+    img.style.transform = '';
+  });
+});
+</script>
+</body>
+</html>
