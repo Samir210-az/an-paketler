@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AN Mərkəzi — 4 Həyat Dəyişdirən Proqram</title>
 <meta name="description" content="Uşağınızın gələcəyinə investisiya edin. AN Psixoloji Mərkəzinin 4 xüsusi proqramı.">
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="AN Paketlər">
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/Samir210-az/an-merkezi/main/icon-192.png">
+<meta name="theme-color" content="#6A0000">
 <link rel="icon" href="https://raw.githubusercontent.com/Samir210-az/an-merkezi/main/logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -1508,6 +1514,15 @@ document.querySelectorAll('.pkg-section').forEach(function(sec) {
     img.style.transform = '';
   });
 });
+</script>
+<script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./service-worker.js')
+      .then(r => console.log('SW registered:', r.scope))
+      .catch(e => console.log('SW error:', e));
+  });
+}
 </script>
 </body>
 </html>
