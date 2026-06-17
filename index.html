@@ -701,6 +701,33 @@ footer {
 }
 .reveal-right.visible{opacity:1;transform:translateX(0)}
 
+/* ===== PACKAGE NAME ROW ===== */
+.pkg-name-row {
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:22px;
+}
+.pkg-icon-inline {
+  font-size:38px;line-height:1;
+  filter:drop-shadow(0 4px 12px rgba(0,0,0,0.35));
+  flex-shrink:0;
+  transition:transform 0.3s;
+}
+.pkg-section:hover .pkg-icon-inline { transform:scale(1.12) rotate(-4deg) }
+.pkg-name-label {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(15px,2vw,19px);
+  font-weight:600;
+  color:rgba(255,255,255,0.55);
+  letter-spacing:0.3px;
+  line-height:1.3;
+  border-left:2px solid rgba(255,255,255,0.15);
+  padding-left:14px;
+}
+.pkg-1 .pkg-name-label { border-left-color:var(--sage2);color:var(--sage2) }
+.pkg-2 .pkg-name-label { border-left-color:var(--violet2);color:var(--violet2) }
+.pkg-3 .pkg-name-label { border-left-color:var(--gold2);color:var(--gold2) }
+.pkg-4 .pkg-name-label { border-left-color:var(--teal2);color:var(--teal2) }
+
 /* ===== URGENCY BAR ===== */
 .pkg-urgency {
   margin:20px 0 24px;
@@ -875,11 +902,10 @@ footer {
     <div class="pkg-photo-num">01</div>
   </div>
   <div class="pkg-content reveal-right">
-    <div class="pkg-badge">
-      <i class="fas fa-seedling"></i>
-      <span data-az="Proqram 01" data-ru="Программа 01" data-en="Program 01"></span>
+    <div class="pkg-name-row">
+      <span class="pkg-icon-inline">🏫</span>
+      <span class="pkg-name-label" data-az="Məktəbə Hazırlıq Paketi" data-ru="Пакет Подготовки к Школе" data-en="School Readiness Package"></span>
     </div>
-    <span class="pkg-icon-big">🏫</span>
 
     <h2 class="pkg-title"
       data-az="Sentyabr gəlir. Uşağınız hazırdırmı — yoxsa siz ümid edirsiniz ki, hazırdır?"
@@ -933,11 +959,10 @@ footer {
 <!-- PKG 2: PEŞƏ YÖNÜMİ -->
 <section class="pkg-section pkg-2">
   <div class="pkg-content reveal-left">
-    <div class="pkg-badge">
-      <i class="fas fa-compass"></i>
-      <span data-az="Proqram 02" data-ru="Программа 02" data-en="Program 02"></span>
+    <div class="pkg-name-row">
+      <span class="pkg-icon-inline">🧭</span>
+      <span class="pkg-name-label" data-az="Peşə Yönümü Paketi" data-ru="Пакет Профессиональной Ориентации" data-en="Career Guidance Package"></span>
     </div>
-    <span class="pkg-icon-big">🧭</span>
 
     <h2 class="pkg-title"
       data-az="Uşağınız böyüyəndə nə olacaq? Bu suala cavab verməyi ona buraxmayın."
@@ -1001,11 +1026,10 @@ footer {
     <div class="pkg-photo-num">03</div>
   </div>
   <div class="pkg-content reveal-right">
-    <div class="pkg-badge">
-      <i class="fas fa-heart"></i>
-      <span data-az="Proqram 03" data-ru="Программа 03" data-en="Program 03"></span>
+    <div class="pkg-name-row">
+      <span class="pkg-icon-inline">💛</span>
+      <span class="pkg-name-label" data-az="Kompleks Qiymətləndirmə Paketi" data-ru="Пакет Комплексной Оценки" data-en="Comprehensive Assessment Package"></span>
     </div>
-    <span class="pkg-icon-big">💛</span>
 
     <h2 class="pkg-title"
       data-az="Hamı deyir «gözləyin, keçər.» Biz deyirik — erkən addım hər şeyi dəyişir."
@@ -1059,11 +1083,10 @@ footer {
 <!-- PKG 4: VALİDEYN MƏSLƏHƏTİ -->
 <section class="pkg-section pkg-4">
   <div class="pkg-content reveal-left">
-    <div class="pkg-badge">
-      <i class="fas fa-hands-holding-child"></i>
-      <span data-az="Proqram 04" data-ru="Программа 04" data-en="Program 04"></span>
+    <div class="pkg-name-row">
+      <span class="pkg-icon-inline">👨‍👩‍👧</span>
+      <span class="pkg-name-label" data-az="Valideyn Məsləhət Xidməti" data-ru="Консультационная Служба для Родителей" data-en="Parent Consultation Service"></span>
     </div>
-    <span class="pkg-icon-big">👨‍👩‍👧</span>
 
     <h2 class="pkg-title"
       data-az="Uşağınıza hər şeyi verirsiniz. Bəs özünüzə?"
