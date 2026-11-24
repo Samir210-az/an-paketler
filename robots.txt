@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://samir210-az.github.io/an-paketler/sitemap.xml
+Sitemap: https://paketler.aze-ai.az/sitemap.xml
